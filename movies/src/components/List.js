@@ -4,7 +4,7 @@ import MovieItem from "./Item";
 
 const List = ({ movies, location }) => {
   return (
-    <ul className="MovieList">
+    <ul className="">
       {movies.map(({ id, imgUrl, title }) => (
         <li key={id}>
           <Link
