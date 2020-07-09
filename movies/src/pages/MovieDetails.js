@@ -1,6 +1,20 @@
-// import React from "react";
+import React, { Component } from "react";
+import * as fetchMovies from "../services/fetchMovies";
 
-// const MovieDetails = () => (
+class MovieDetails extends Component {
+  state = {
+    movie: null,
+  };
 
-// )
-//  export default MovieDetails
+  componentDidMount() {
+    const id = this.props.params.match.movieId;
+    fetchMovies.fetchMovies(id).then((movie) => this.setState({ movie }));
+  }
+  // render(){
+  //     return (
+
+  //     )
+  // }
+}
+
+export default MovieDetails;

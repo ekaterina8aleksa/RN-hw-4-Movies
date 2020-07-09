@@ -11,10 +11,13 @@ class HomePage extends Component {
   }
   render() {
     const { movies } = this.state;
+
     return (
       <>
-        <h1>Hot for Today</h1>
-        <TrendsList items={movies} />
+        <div className="homeTitel">
+          <h1>Hot for Today</h1>
+        </div>
+        <TrendsList movies={movies} />
       </>
     );
   }

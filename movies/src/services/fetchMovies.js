@@ -23,7 +23,7 @@ export const fetchMovies = (movieId) => {
 export const fetchCast = (movieId) => {
   return axios
     .get(`${root}movie/${movieId}/credits?api_key=${key}`)
-    .then((response) => response.data.results);
+    .then((response) => response.data.cast);
 };
 export const fetchReviews = (movieId) => {
   return axios
