@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 
-class SearchBar extends Component {
+class Search extends Component {
   state = { query: "" };
 
   handleChange = (e) => {
@@ -37,4 +37,4 @@ class SearchBar extends Component {
     );
   }
 }
-export default SearchBar;
+export default Search;

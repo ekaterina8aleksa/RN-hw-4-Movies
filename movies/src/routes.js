@@ -1,5 +1,5 @@
 export default {
   home: "/",
   movies: "/movies",
-  details: "/movies/movieId",
+  details: "/movies/:movieId",
 };
