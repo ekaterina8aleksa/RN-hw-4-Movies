@@ -1,10 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Switch } from "react-router-dom";
 import routes from "./routes";
-// import HomePage from "./pages/HomePage.js";
-// import MovieSearch from "./pages/MovieSearch";
-// import MovieDetails from "./pages/MovieDetails";
-// import NotFound from "./pages/NotFound.js";
 import Container from "./common/Container";
 import Navigation from "./components/Navigation";
 import Spinner from "./common/Loader";

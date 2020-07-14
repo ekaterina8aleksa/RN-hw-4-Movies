@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as fetchMovies from "../services/fetchMovies";
 import Movie from "../components/Movie";
+import routes from "../routes";
 class MovieDetails extends Component {
   state = {
     movie: null,
@@ -11,10 +12,25 @@ class MovieDetails extends Component {
 
     fetchMovies.fetchMovies(id).then((movie) => this.setState({ movie }));
   }
+
+  handleGoBack = () => {
+    const { location, history } = this.props;
+
+    history.push(location?.state?.from || routes.movies);
+  };
+
   render() {
     const { movie } = this.state;
     return (
-      <>{movie && <Movie poster_path={movie.poster_path} movie={movie} />}</>
+      <>
+        {movie && (
+          <Movie
+            poster_path={movie.poster_path}
+            movie={movie}
+            goBack={this.handleGoBack}
+          />
+        )}
+      </>
     );
   }
 }

@@ -5,8 +5,11 @@ import ReviewsList from "./ReviewsList";
 import CastList from "./CastList";
 import errorImage from "../services/errorImage";
 
-const Movie = ({ movie, poster_path }) => (
+const Movie = ({ movie, poster_path, goBack }) => (
   <>
+    <button type="button" className="goBackBtn" onClick={goBack}>
+      Go Back
+    </button>
     <div>
       <h2 className="movieFilmTitle">{movie.original_title}</h2>
       <img
@@ -56,6 +59,7 @@ Movie.defaultProps = {
   overview: "sorry =( no overview",
 };
 Movie.propTypes = {
+  goBack: PropTypes.func.isRequired,
   poster_path: PropTypes.string,
   movie: PropTypes.objectOf(
     PropTypes.shape({

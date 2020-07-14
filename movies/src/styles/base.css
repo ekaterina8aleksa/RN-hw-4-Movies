@@ -222,12 +222,10 @@ ul {
   padding-left: 4px;
   padding-right: 4px;
 }
-
 .searchInput::placeholder {
   font: inherit;
   font-size: 18px;
 }
-
 .reviewList {
   list-style: none;
   margin: 0;
@@ -306,14 +304,12 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
-.castItem {
-}
 .linkBtn {
   text-decoration: none;
   outline: none;
   display: inline-block;
-  padding: 15px 30px;
-  margin: 10px 20px;
+  padding: 10px 20px;
+  margin: 5px 10px;
   border-radius: 10px;
   box-shadow: 0 0 40px 40px #9f3cd9 inset, 0 0 0 0 #9f3cd9;
   font-family: "Montserrat", sans-serif;
@@ -331,4 +327,23 @@ ul {
 }
 .linkNavigation {
   display: inline-block;
+}
+.goBackBtn {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px 10px;
+  border-radius: 40px;
+  box-shadow: 0 0 40px 40px #f137a6 inset, 0 0 0 0 #f137a6;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  transition: 0.15s ease-in-out;
+  border: 0px;
+}
+.goBackBtn:hover {
+  box-shadow: 0 0 10px 0 #f137a6 inset, 0 0 10px 4px #f137a6;
+  color: #f137a6;
 }
