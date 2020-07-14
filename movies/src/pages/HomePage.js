@@ -14,7 +14,7 @@ class HomePage extends Component {
 
     return (
       <>
-        <div className="homeTitel">
+        <div className="homeTitle">
           <h1>Hot for Today</h1>
         </div>
         <TrendsList movies={movies} />

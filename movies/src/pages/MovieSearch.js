@@ -9,34 +9,44 @@ class MovieSearch extends Component {
   state = {
     movies: [],
     searchQuery: "",
-    isLoading: false,
   };
   componentDidMount() {
-    fetchMovies
-      .fetchSearch(this.searchQuery)
-      .then((movies) => this.setState({ movies }));
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchQuery !== this.state.searchQuery) {
-      this.fetchImg();
-    }
-  }
-  fetchItems = () => {
-    const { searchQuery } = this.state;
-
-    if (!searchQuery || searchQuery === " ") {
-      toast.warn(`Oooopsy, wrong query  =( `);
+    if (!this.state.searchQuery || this.state.searchQuery === " ") {
       return;
     } else {
       fetchMovies
-        .fetchSearch(searchQuery)
+        .fetchSearch(this.searchQuery)
         .then((movies) => this.setState({ movies }));
     }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.searchQuery !== this.state.searchQuery) {
+      this.fetchMovies();
+    } else {
+      toast.warn(`Oooopsy, wrong query  =( `);
+      return;
+    }
+  }
+
+  /**this.setState(prevState => ({
+                    movie: [...prevState.movie, ...results],
+                })); */
+
+  fetchMovies = () => {
+    const { searchQuery } = this.state;
+
+    if (!searchQuery) {
+      return;
+    }
+
+    fetchMovies
+      .fetchSearch(searchQuery)
+      .then((movies) => this.setState({ movies }));
   };
 
   onChangeQuery = (query) => {
     this.setState({
-      searchQuery: query,
+      searchQuery: query.trim(),
       movies: [],
     });
   };

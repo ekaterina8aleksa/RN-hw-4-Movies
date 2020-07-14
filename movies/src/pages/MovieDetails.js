@@ -7,7 +7,8 @@ class MovieDetails extends Component {
   };
 
   componentDidMount() {
-    const { id } = this.props.match.params.movieId;
+    const id = this.props.match.params.movieId;
+
     fetchMovies.fetchMovies(id).then((movie) => this.setState({ movie }));
   }
   render() {

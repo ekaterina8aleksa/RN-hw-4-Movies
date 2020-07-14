@@ -11,7 +11,7 @@ export const fetchTrendsMovies = () => {
 export const fetchSearch = (query) => {
   return axios
     .get(
-      `${root}movie/search?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
+      `${root}search/movie?api_key=${key}&language=en-US&query=${query}&page=1`
     )
     .then((response) => response.data.results);
 };

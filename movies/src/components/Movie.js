@@ -1,24 +1,48 @@
 import React from "react";
-import { Link, Route, withRouter } from "react-router-dom";
+import { NavLink, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import ReviewsList from "./ReviewsList";
 import CastList from "./CastList";
+import errorImage from "../services/errorImage";
 
 const Movie = ({ movie, poster_path }) => (
   <>
     <div>
-      <h2>{movie.original_title}</h2>
+      <h2 className="movieFilmTitle">{movie.original_title}</h2>
       <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+        className="bigImg"
+        src={
+          poster_path
+            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+            : `${errorImage}`
+        }
         alt={movie.original_title}
       />
-      <h3>Overview</h3>
-      <p>{movie.overview}</p>
+      <h3 className="moviePageTitle ">Overview</h3>
+      <p className="overview">{movie.overview}</p>
     </div>
     <div>
-      <p>Additional Information</p>
-      <Link to={`/movies/${movie.id}/cast`}>Cast</Link> <br />
-      <Link to={`/movies/${movie.id}/reviews`}>Reviews</Link>
+      <p className="moviePageTitle ">Additional Information</p>
+      <ul>
+        <li className="linkNavigation">
+          <NavLink
+            to={`/movies/${movie.id}/cast`}
+            activeClassName="active"
+            className="linkBtn"
+          >
+            Cast
+          </NavLink>
+        </li>
+        <li className="linkNavigation">
+          <NavLink
+            to={`/movies/${movie.id}/reviews`}
+            activeClassName="active"
+            className="linkBtn"
+          >
+            Reviews
+          </NavLink>
+        </li>
+      </ul>
     </div>
     <div>
       <Route path="/movies/:movieId/cast" component={CastList} />
@@ -26,15 +50,19 @@ const Movie = ({ movie, poster_path }) => (
     </div>
   </>
 );
+
+Movie.defaultProps = {
+  poster_path: errorImage,
+  overview: "sorry =( no overview",
+};
 Movie.propTypes = {
-  poster_path: PropTypes.string.isRequired,
+  poster_path: PropTypes.string,
   movie: PropTypes.objectOf(
     PropTypes.shape({
-      original_title: PropTypes.string,
-      original_name: PropTypes.string,
-      poster_path: PropTypes.string.isRequired,
-      overview: PropTypes.string.isRequired,
-      genres: PropTypes.string.isRequired,
+      // adult: PropTypes.oneOfType([PropTypes.object, PropTypes.boolean]),
+      // original_title: PropTypes.string,
+      poster_path: PropTypes.string,
+      overview: PropTypes.string,
     })
   ).isRequired,
 };

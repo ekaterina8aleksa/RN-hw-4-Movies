@@ -5,21 +5,21 @@ import PropTypes from "prop-types";
 
 class ReviewsList extends Component {
   state = {
-    items: null,
+    items: [],
   };
   componentDidMount() {
-    const { id } = this.props.match.params.movieId;
+    const id = this.props.match.params.movieId;
     fetchMovies.fetchReviews(id).then((items) => this.setState({ items }));
   }
   render() {
     const { items } = this.state;
     return (
       <>
-        <ul className="">
+        <ul className="reviewList">
           {items.length > 0 ? (
-            items.map((item) => (
-              <li key={item.id}>
-                <ReviewItem item={item} />
+            items.map(({ author, content, id }) => (
+              <li className="reviewItem" key={id}>
+                <ReviewItem author={author} content={content} />
               </li>
             ))
           ) : (
@@ -35,6 +35,6 @@ ReviewsList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
     }).isRequired
-  ).isRequired,
+  ),
 };
 export default ReviewsList;

@@ -1,18 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const ReviewItem = ({ item }) => (
+const ReviewItem = ({ author, content }) => (
   <>
-    <h4>Author: {item.author}</h4>
-    <p> {item.content}</p>
+    <h4 className="reviewAuthor">Author: {author}</h4>
+    <p className="reviewContent"> {content}</p>
   </>
 );
 ReviewItem.propTypes = {
-  item: PropTypes.objectOf(
-    PropTypes.shape({
-      author: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  author: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  content: PropTypes.string.isRequired,
 };
 export default ReviewItem;

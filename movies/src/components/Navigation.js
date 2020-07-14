@@ -4,13 +4,18 @@ import routes from "../routes";
 
 const Navigation = () => (
   <ul className="">
-    <li className="">
-      <NavLink to={routes.home} exact activeClassName="">
+    <li className="linkNavigation ">
+      <NavLink
+        to={routes.home}
+        exact
+        activeClassName="active"
+        className="linkBtn"
+      >
         Home
       </NavLink>
     </li>
-    <li className="">
-      <NavLink to={routes.movies} activeClassName="">
+    <li className="linkNavigation ">
+      <NavLink to={routes.movies} activeClassName="active" className="linkBtn">
         Movies
       </NavLink>
     </li>

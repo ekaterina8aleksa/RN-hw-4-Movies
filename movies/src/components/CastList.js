@@ -5,31 +5,42 @@ import PropTypes from "prop-types";
 
 class CastList extends Component {
   state = {
-    items: null,
+    items: [],
   };
+
   componentDidMount() {
-    const { id } = this.props.match.params.movieId;
+    const id = this.props.match.params.movieId;
+
     fetchMovies.fetchCast(id).then((items) => this.setState({ items }));
   }
+
   render() {
     const { items } = this.state;
+
     return (
-      <ul className="">
+      <ul className="castList">
         {items.length > 0 &&
-          items.map(({ item }) => (
-            <li key={item.cast_id} className="">
-              <CastItem profile_path={item.profile_path} item={item} />
+          items.map(({ name, profile_path, cast_id, character }) => (
+            <li key={cast_id}>
+              <CastItem
+                profile_path={profile_path}
+                name={name}
+                character={character}
+                cast_id={cast_id}
+              />
             </li>
           ))}
       </ul>
     );
   }
 }
+
 CastList.propTypes = {
-  items: PropTypes.arrayOf(
+  item: PropTypes.objectOf(
     PropTypes.shape({
-      cast_id: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
+      cast_id: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
+        .isRequired,
+    })
+  ),
 };
 export default CastList;
