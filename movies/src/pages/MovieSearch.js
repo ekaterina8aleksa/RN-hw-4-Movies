@@ -10,27 +10,24 @@ class MovieSearch extends Component {
     movies: [],
     searchQuery: "",
   };
-  componentDidMount() {
-    if (!this.state.searchQuery || this.state.searchQuery === " ") {
-      return;
-    } else {
-      fetchMovies
-        .fetchSearch(this.searchQuery)
-        .then((movies) => this.setState({ movies }));
-    }
-  }
+  // componentDidMount() {
+  //     if (!this.state.searchQuery || this.state.searchQuery === " ") {
+  //         // toast.warn(`Oooopsy, wrong request  =( `);
+  //         return;
+  //     } else {
+  //         fetchMovies
+  //             .fetchSearch(this.searchQuery)
+  //             .then((movies) => this.setState({ movies }));
+  //     }
+  // }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.fetchMovies();
     } else {
-      toast.warn(`Oooopsy, wrong query  =( `);
+      toast.warn(`Oooopsy, wrong request  =( `);
       return;
     }
   }
-
-  /**this.setState(prevState => ({
-                    movie: [...prevState.movie, ...results],
-                })); */
 
   fetchMovies = () => {
     const { searchQuery } = this.state;

@@ -64,7 +64,7 @@ Movie.propTypes = {
   movie: PropTypes.objectOf(
     PropTypes.shape({
       // adult: PropTypes.oneOfType([PropTypes.object, PropTypes.boolean]),
-      // original_title: PropTypes.string,
+      original_title: PropTypes.string.isRequired,
       poster_path: PropTypes.string,
       overview: PropTypes.string,
     })
