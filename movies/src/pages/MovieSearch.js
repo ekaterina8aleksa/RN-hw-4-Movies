@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Search from "../common/Search";
 import * as fetchMovies from "../services/fetchMovies";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SearchList from "../components/List";
 
@@ -23,9 +22,6 @@ class MovieSearch extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.fetchMovies();
-    } else {
-      toast.warn(`Oooopsy, wrong request  =( `);
-      return;
     }
   }
 
@@ -52,7 +48,6 @@ class MovieSearch extends Component {
     const { movies } = this.state;
     return (
       <>
-        <ToastContainer />
         <Search onSubmit={this.onChangeQuery} />
         <SearchList movies={movies} />
       </>

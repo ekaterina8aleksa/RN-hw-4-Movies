@@ -5,13 +5,13 @@ const key = "d1c54d9ef388629bdcc2a11b2c88483f";
 
 export const fetchTrendsMovies = () => {
   return axios
-    .get(`${root}trending/movie/day?api_key=${key}`)
+    .get(`${root}trending/movie/day?api_key=${key}&include_adult=false`)
     .then((response) => response.data.results);
 };
 export const fetchSearch = (query) => {
   return axios
     .get(
-      `${root}search/movie?api_key=${key}&language=en-US&query=${query}&page=1include_adult=false`
+      `${root}search/movie?api_key=${key}&language=en-US&query=${query}&page=1&include_adult=false`
     )
     .then((response) => response.data.results);
 };

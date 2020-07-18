@@ -1,16 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import errorImage from "../services/errorImage";
+import { errorImage, bigImgPath } from "../services/urlImg";
 
 const MovieItem = ({ poster_path, original_title }) => (
   <div className="movieItem">
     <div>
       <img
-        src={
-          poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `${errorImage}`
-        }
+        src={poster_path ? `${bigImgPath}${poster_path}` : `${errorImage}`}
         className="movieItemImage"
         alt={original_title}
       />

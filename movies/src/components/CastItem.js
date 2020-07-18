@@ -1,16 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import errorImage from "../services/errorImage";
+import { errorImage, smallImgPath } from "../services/urlImg";
 
 const CastItem = ({ character, name, profile_path }) => (
   <>
     <img
       className="smallImg"
-      src={
-        profile_path
-          ? `https://image.tmdb.org/t/p/w200/${profile_path}`
-          : `${errorImage}`
-      }
+      src={profile_path ? `${smallImgPath}${profile_path}` : `${errorImage}`}
       alt={name}
     />
     <p>{name}</p>

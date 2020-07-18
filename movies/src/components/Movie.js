@@ -3,7 +3,7 @@ import { NavLink, Route, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import ReviewsList from "./ReviewsList";
 import CastList from "./CastList";
-import errorImage from "../services/errorImage";
+import { errorImage, bigImgPath } from "../services/urlImg";
 
 const Movie = ({ movie, poster_path, goBack }) => (
   <>
@@ -14,11 +14,7 @@ const Movie = ({ movie, poster_path, goBack }) => (
       <h2 className="movieFilmTitle">{movie.original_title}</h2>
       <img
         className="bigImg"
-        src={
-          poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `${errorImage}`
-        }
+        src={poster_path ? `${bigImgPath}${poster_path}` : `${errorImage}`}
         alt={movie.original_title}
       />
       <h3 className="moviePageTitle ">Overview</h3>
@@ -61,13 +57,10 @@ Movie.defaultProps = {
 Movie.propTypes = {
   goBack: PropTypes.func.isRequired,
   poster_path: PropTypes.string,
-  movie: PropTypes.objectOf(
-    PropTypes.shape({
-      // adult: PropTypes.oneOfType([PropTypes.object, PropTypes.boolean]),
-      original_title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string,
-      overview: PropTypes.string,
-    })
-  ).isRequired,
+  movie: PropTypes.shape({
+    original_title: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+  }).isRequired,
 };
 export default withRouter(Movie);
