@@ -8,8 +8,8 @@ import Spinner from "./common/Loader";
 const HomePage = lazy(() =>
   import("./pages/HomePage" /* webpackChunkName: "home-view" */)
 );
-const MovieSearch = lazy(() =>
-  import("./pages/MovieSearch" /*webpackChunkName: "movie-search"*/)
+const MoviePage = lazy(() =>
+  import("./pages/MoviePage" /*webpackChunkName: "movie-page"*/)
 );
 const MovieDetails = lazy(() =>
   import("./pages/MovieDetails" /* webpackChunkName: "movie-details"*/)
@@ -26,7 +26,7 @@ const App = () => {
         <Switch>
           <Route exact path={routes.home} component={HomePage} />
           <Route path={routes.details} component={MovieDetails} />
-          <Route path={routes.movies} component={MovieSearch} />
+          <Route path={routes.movies} component={MoviePage} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

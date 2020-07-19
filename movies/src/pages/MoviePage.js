@@ -4,21 +4,21 @@ import * as fetchMovies from "../services/fetchMovies";
 import "react-toastify/dist/ReactToastify.css";
 import SearchList from "../components/List";
 
-class MovieSearch extends Component {
+class MoviePage extends Component {
   state = {
     movies: [],
     searchQuery: "",
   };
-  // componentDidMount() {
-  //     if (!this.state.searchQuery || this.state.searchQuery === " ") {
-  //         // toast.warn(`Oooopsy, wrong request  =( `);
-  //         return;
-  //     } else {
-  //         fetchMovies
-  //             .fetchSearch(this.searchQuery)
-  //             .then((movies) => this.setState({ movies }));
-  //     }
-  // }
+  componentDidMount() {
+    if (!this.state.searchQuery || this.state.searchQuery === " ") {
+      // toast.warn(`Oooopsy, wrong request  =( `);
+      return;
+    } else {
+      fetchMovies
+        .fetchSearch(this.searchQuery)
+        .then((movies) => this.setState({ movies }));
+    }
+  }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.fetchMovies();
@@ -55,4 +55,4 @@ class MovieSearch extends Component {
   }
 }
 
-export default MovieSearch;
+export default MoviePage;
