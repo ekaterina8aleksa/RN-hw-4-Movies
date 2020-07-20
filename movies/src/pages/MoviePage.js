@@ -3,6 +3,7 @@ import Search from "../common/Search";
 import * as fetchMovies from "../services/fetchMovies";
 import "react-toastify/dist/ReactToastify.css";
 import SearchList from "../components/List";
+import { setSearchQuery, getSearchQuery } from "../services/queryLocalStorage";
 
 class MoviePage extends Component {
   state = {
@@ -10,17 +11,14 @@ class MoviePage extends Component {
     searchQuery: "",
   };
   componentDidMount() {
-    if (!this.state.searchQuery || this.state.searchQuery === " ") {
-      // toast.warn(`Oooopsy, wrong request  =( `);
-      return;
-    } else {
-      fetchMovies
-        .fetchSearch(this.searchQuery)
-        .then((movies) => this.setState({ movies }));
+    const parsedSearchQuery = getSearchQuery("searchQuery");
+    if (parsedSearchQuery) {
+      this.setState({ searchQuery: parsedSearchQuery });
     }
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
+      setSearchQuery("searchQuery", this.state.searchQuery);
       this.fetchMovies();
     }
   }
@@ -49,7 +47,7 @@ class MoviePage extends Component {
     return (
       <>
         <Search onSubmit={this.onChangeQuery} />
-        <SearchList movies={movies} />
+        <SearchList movies={movies} location={this.props.location} />
       </>
     );
   }

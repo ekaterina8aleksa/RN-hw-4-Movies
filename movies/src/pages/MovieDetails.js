@@ -15,8 +15,8 @@ class MovieDetails extends Component {
 
   handleGoBack = () => {
     const { location, history } = this.props;
-
-    history.push(location?.state?.from || routes.home);
+    console.log("location", location);
+    history.push(location?.state?.from || routes.movies);
   };
 
   render() {
